@@ -2,8 +2,9 @@
 
 This repository contains a collection of example **Skills** for [Google Antigravity](https://antigravity.google). These examples demonstrate the "Agentic Command Line" concept, showing how to package expertise, workflows, and tools into modular units that an AI agent can use.
 
-If you'd like to read the associated blog post go here: https://medium.com/google-cloud/tutorial-getting-started-with-antigravity-skills-864041811e0d
-If you'd like to do a codelab on writing Antigravity Skills, go here: https://codelabs.developers.google.com/getting-started-with-antigravity-skills?hl=en#0
+Read the blog post: https://medium.com/google-cloud/tutorial-getting-started-with-antigravity-skills-864041811e0d
+
+Do a codelab: https://codelabs.developers.google.com/getting-started-with-antigravity-skills?hl=en#0
 
 ## Overview
 
