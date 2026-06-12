@@ -10,7 +10,7 @@ Check out [Google Antigravity Community Hub](https://github.com/rominirani/googl
 
 ## Antigravity Skills
 
-Antigravity Skills allow you to define *how* an agent should behave, what tools it should use, and what context it should reference. This project breaks down skill development into progressive levels of complexity.
+Antigravity Skills allow you to define *how* an agent should behave, what tools it should use, and what context it should reference. This project breaks down skill development into 4 progressive levels of complexity.
 
 ### The Skills
 
