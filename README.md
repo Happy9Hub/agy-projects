@@ -6,58 +6,59 @@ Read the blog post: https://medium.com/google-cloud/tutorial-getting-started-wit
 
 Do a codelab: https://codelabs.developers.google.com/getting-started-with-antigravity-skills?hl=en#0
 
-Check out [Google Antigravity Community Hub](https://github.com/rominirani/google-antigravity-community-hub) too for resources, articles and more on Antigravity. 
+Also check out the [Google Antigravity Community Hub](https://github.com/rominirani/google-antigravity-community-hub) for more resources, articles, and updates on Antigravity.
 
 ## Antigravity Skills
 
-Antigravity Skills allow you to define *how* an agent should behave, what tools it should use, and what context it should reference. This project breaks down skill development into 4 progressive levels of complexity.
+Antigravity Skills allow you to define *how* an agent should behave, which tools it should use, and what context it should reference. This project breaks down skill development into 4 progressive levels of complexity.
 
-### The Skills
+### Skills in `skills_tutorial/`
 
 The `skills_tutorial/` directory contains the following examples:
 
 #### Level 1: Basic Routing
 **`git-commit-formatter`**
-*   **Concept**: Pure Prompt Engineering.
-*   **Function**: Intercepts "commit" requests and formats the message according to the Conventional Commits specification.
-*   **Key File**: `SKILL.md`
+* **Concept**: Pure prompt engineering.
+* **Function**: Intercepts "commit" requests and formats the message according to the Conventional Commits specification.
+* **Key File**: `SKILL.md`
 
 #### Level 2: Asset Utilization
 **`license-header-adder`**
-*   **Concept**: Loading static resources.
-*   **Function**: Adds a standard Apache 2.0 license header to source files by reading a template from the `resources/` folder.
-*   **Key Files**: `SKILL.md`, `resources/HEADER_TEMPLATE.txt`
+* **Concept**: Loading static resources.
+* **Function**: Adds a standard Apache 2.0 license header to source files by reading a template from the `resources/` folder.
+* **Key Files**: `SKILL.md`, `resources/HEADER_TEMPLATE.txt`
 
 #### Level 3: Few-Shot Learning
 **`json-to-pydantic`**
-*   **Concept**: Learning by Example.
-*   **Function**: Converts JSON data into Pydantic models by referencing a "Golden Example" pair (Input JSON -> Output Python) instead of using complex instructions.
-*   **Key Files**: `SKILL.md`, `examples/`
+* **Concept**: Learning by example.
+* **Function**: Converts JSON data into Pydantic models by referencing a "golden example" pair (input JSON → output Python) instead of relying on complex instructions.
+* **Key Files**: `SKILL.md`, `examples/`
 
 #### Level 4: Tool Use & Validation
 **`database-schema-validator`**
-*   **Concept**: Delegating to deterministic scripts.
-*   **Function**: Validates SQL schema files for safety and naming conventions by running a Python script, ensuring 100% accuracy.
-*   **Key Files**: `SKILL.md`, `scripts/validate_schema.py`
+* **Concept**: Delegating to deterministic scripts.
+* **Function**: Validates SQL schema files for safety and naming conventions by running a Python script, ensuring accurate results.
+* **Key Files**: `SKILL.md`, `scripts/validate_schema.py`
 
 ### Usage
 
 To use these skills in your Antigravity environment:
 
-1.  Clone this repository.
-2.  Copy the desired folders from `skills_tutorial/` into your workspace's `.agent/skills/` directory (or your global `~/.gemini/antigravity/skills/` directory).
-3.  Restart your agent session.
+1. Clone this repository.
+2. Copy the desired folders from `skills_tutorial/` into your workspace's `.agent/skills/` directory, or into your global `~/.gemini/antigravity/skills/` directory.
+3. Restart your agent session.
 
 ## Gemini CLI Skills
 
-### The Skills
-The `gemini-cli-skills/` directory contains the following examples:
+### Skills in `gemini-cli-skills/`
+
+The `gemini-cli-skills/` directory contains the following example:
 
 #### Always Verify GCP
 **`always-verify-gcp`**
-*   **Concept**: Validate GCP command with latest official documentation.
-*   **Function**: This skills interprets any ambiguous Google Cloud command first with the official documentation via the Developer Knowledge MCP Server. It then uses the `ask_user` tool to provide a validated response.
-*   **Key File**: `SKILL.md`
+* **Concept**: Validating GCP commands with the latest official documentation.
+* **Function**: This skill interprets ambiguous Google Cloud commands by first consulting the official documentation via the Developer Knowledge MCP Server, then using the `ask_user` tool to provide a validated response.
+* **Key File**: `SKILL.md`
 
 ## License
 
