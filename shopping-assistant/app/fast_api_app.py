@@ -20,11 +20,34 @@ from google.cloud import logging as google_cloud_logging
 
 from app.app_utils.telemetry import setup_telemetry
 from app.app_utils.typing import Feedback
+import logging
 
 setup_telemetry()
-_, project_id = google.auth.default()
-logging_client = google_cloud_logging.Client()
-logger = logging_client.logger(__name__)
+
+class ConsoleLogger:
+    def __init__(self, name: str):
+        self._logger = logging.getLogger(name)
+        # Ensure stdout logging is active
+        if not self._logger.handlers:
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+            handler.setFormatter(formatter)
+            self._logger.addHandler(handler)
+            self._logger.setLevel(logging.INFO)
+
+    def log_struct(self, data: dict, severity: str = "INFO"):
+        self._logger.info(f"[{severity}] {data}")
+
+try:
+    _, project_id = google.auth.default()
+    logging_client = google_cloud_logging.Client()
+    logger = logging_client.logger(__name__)
+    has_credentials = True
+except Exception:
+    # Fall back to console logger if ADC credentials are not configured locally
+    logger = ConsoleLogger(__name__)
+    has_credentials = False
+
 allow_origins = (
     os.getenv("ALLOW_ORIGINS", "").split(",") if os.getenv("ALLOW_ORIGINS") else None
 )
@@ -44,7 +67,7 @@ app: FastAPI = get_fast_api_app(
     artifact_service_uri=artifact_service_uri,
     allow_origins=allow_origins,
     session_service_uri=session_service_uri,
-    otel_to_cloud=True,
+    otel_to_cloud=has_credentials,
 )
 app.title = "shopping-assistant"
 app.description = "API for interacting with the Agent shopping-assistant"
