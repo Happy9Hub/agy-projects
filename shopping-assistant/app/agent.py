@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 env_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '.env')
 load_dotenv(dotenv_path=env_path)
 
+from app.tools import process_cart_checkout
+
 # Securely load the Gemini API key from environment variables
 model = Gemini(
     model="gemini-3.1-flash-lite",
@@ -38,8 +40,8 @@ def redeem_discount(code: str, user_id: str) -> str:
 shopping_agent = LlmAgent(
     name="ShoppingHelper",
     model=model,
-    instruction="You are a helpful shopping assistant. Use your tools to redeem discount codes for users.",
-    tools=[redeem_discount],
+    instruction="You are a helpful shopping assistant. Use your tools to redeem discount codes for users, and process checkouts for shopping carts.",
+    tools=[redeem_discount, process_cart_checkout],
 )
 
 root_workflow = Workflow(
